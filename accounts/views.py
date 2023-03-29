@@ -89,5 +89,40 @@ class CompanyRegister(APIView):
                 'errors': None
             }
         )
+        
+        
+class LoginView(APIView):
+    authentication_classes = (TokenAuthentication,)
+    permission_classes = (AllowAny,)
+
+    def post(self, request):
+        username = request.data.get('username')
+        password = request.data.get('password')
+
+        user = authenticate(username=username, password=password)
+
+        if not user:
+            return Response(
+                {
+                    'success': False,
+                    'data': None,
+                    'message': 'Invalid username or password, Please try again',
+                    'errors': 'Invalid credentials'
+                },
+            )
+
+        token, _ = Token.objects.get_or_create(user=user)
+        serializer = UserSerializer(user)
+        serializer_data = serializer.data
+        serializer_data['token'] = token.key
+
+        return Response(
+            {
+                'success': True,
+                'data': serializer_data,
+                'message': 'Successfully logged in',
+                'errors': None
+            }
+        )
 
 # Create your views here.
