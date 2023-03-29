@@ -73,5 +73,21 @@ class CompanyProfile(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     
+class StaffProfile(models.Model):
+    fkUser = models.OneToOneField(User, on_delete=models.CASCADE)
+    first_name = models.CharField(max_length=50)
+    last_name = models.CharField(max_length=50, null=True, blank=True)
+    image = models.ImageField(upload_to='staff/profile/')
+    post = models.CharField(max_length=20, null=True, blank=True)
+    mobile = models.CharField(max_length=20)
+    email = models.EmailField()
+    address = models.CharField(max_length=25, blank=True, null=True)
+    country = CountryField(blank=True, null=True)
+    city = models.CharField(max_length=25, blank=True, null=True)
+    state = models.CharField(max_length=25, blank=True, null=True)
+    pincode = models.CharField(max_length=15, blank=True, null=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+    
 # Create your models here.
 
