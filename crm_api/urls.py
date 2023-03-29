@@ -37,8 +37,10 @@ urlpatterns = [
     # path('admin/', admin.site.urls),
 
     path('api/v1/accounts/', include('accounts.urls')),
-    path('api/v1/comapny/', include('company.urls')),
+    path('api/v1/company/', include('company.urls')),
     path('api/v1/staff/', include('staff.urls')),
+    path('api/v1/team_lead/', include('team_lead.urls')),
+    path('api/v1/lead/', include('lead.urls')),
 
     path('swagger/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
     path('redoc/', schema_view.with_ui('redoc', cache_timeout=0), name='schema-redoc'),

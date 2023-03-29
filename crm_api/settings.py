@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django_countries',
     
     'drf_yasg',
     'rest_framework',
@@ -54,7 +55,9 @@ INSTALLED_APPS = [
     
     'accounts',
     'company',
+    'team_lead',
     'staff',
+    'lead',
     
 ]
 
